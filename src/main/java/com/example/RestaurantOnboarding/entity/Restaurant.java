@@ -1,6 +1,5 @@
 package com.example.RestaurantOnboarding.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,26 +9,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long uid;
+    private Long restaurant_id;
 
-    private String name ;
+    private String restaurant_name;
 
-    private String email ;
+    private String description;
 
-    private String username;
-    private String password;
+    private String created_at;
 
-    private String role;
-
-    private
 
 }
