@@ -1,35 +1,42 @@
 package com.example.RestaurantOnboarding.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
 
-    private String name ;
+    @Column(nullable = false , unique = true)
+    private String fullname ;
 
+    @Column(nullable = false,unique = true)
+    @NonNull
     private String email ;
 
+    @NonNull
     private String username;
+
+    @NotNull
     private String password;
 
-    private String role;
+    @NotNull
+    private String status;
 
-    private
+    @NotNull
+    private Long phoneNo;
+
+    @ManyToOne
+    @JoinColumn(name ="role_id")
+    private Role role;
 
 }

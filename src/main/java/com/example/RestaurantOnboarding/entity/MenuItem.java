@@ -1,4 +1,4 @@
 package com.example.RestaurantOnboarding.entity;
 
-public class Menu {
+public class MenuItem extends BaseEntity{
 }

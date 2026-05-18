@@ -1,9 +1,6 @@
 package com.example.RestaurantOnboarding.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,17 +11,18 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Restaurant {
+public class RestaurantChain extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long restaurant_id;
+    private Long chain_id;
 
-    private String restaurant_name;
+    private String chain_name;
 
     private String description;
 
-    private String created_at;
-
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
 
 }
