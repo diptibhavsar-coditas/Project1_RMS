@@ -30,4 +30,19 @@ public class InventoryServiceImpl implements InventoryService {
 
         inventoryRepository.save(inventory);
     }
+
+    @Override
+    public void increaseStock(Long ingredientId, int quantity) {
+        InventoryStock inventory = inventoryRepository.findById(ingredientId)
+                .orElseThrow(() -> new ResourceNotFoundException("Ingredient not found"));
+
+        if (inventory.getAvailableQuantity() < quantity) {
+            throw new BusinessException("Stock cannot go negative");
+        }
+
+        inventory.setAvailableQuantity(inventory.getAvailableQuantity() + quantity);
+
+        inventoryRepository.save(inventory);
+
+    }
 }

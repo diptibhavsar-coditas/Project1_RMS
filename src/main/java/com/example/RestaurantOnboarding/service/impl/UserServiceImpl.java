@@ -48,11 +48,11 @@ public class UserServiceImpl implements UserService {
                 new org.springframework.security.core.userdetails.User(
                         user.getEmail(),
                         user.getPassword(),
-                        List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()))
+                        List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().getRoleName()))
                 )
         );
 
-        return new AuthResponseDto(token, user.getRole().name(), "Login successful");
+        return new AuthResponseDto(token, user.getRole().getRoleName(), "Login successful");
     }
 
     @Override

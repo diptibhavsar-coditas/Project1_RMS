@@ -4,4 +4,8 @@ import com.example.RestaurantOnboarding.dto.BranchDto.BranchResponseDto;
 import com.example.RestaurantOnboarding.entity.RestaurantBranch;
 
 public interface BranchMapper extends BaseMapper<RestaurantBranch, BranchResponseDto> {
+
+    @Override
+    BranchResponseDto toDto(RestaurantBranch entity);
+
 }

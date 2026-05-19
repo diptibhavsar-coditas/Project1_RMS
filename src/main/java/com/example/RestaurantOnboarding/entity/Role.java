@@ -20,4 +20,5 @@ public class Role {
     @Enumerated(EnumType.STRING)
     @Column(unique = true)
     private RoleType roleName;
+
 }

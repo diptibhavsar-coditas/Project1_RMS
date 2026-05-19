@@ -17,8 +17,10 @@ public interface InventoryService {
 //    List<InventoryResponseDto> getAllIngredients(Long branchId);
 //
       void reduceStock(Long ingredientId, int quantity);
+
+
 //
-//    void increaseStock(Long ingredientId, int quantity);
+     void increaseStock(Long ingredientId, int quantity);
 //
 //    void deleteIngredient(Long id);
 //

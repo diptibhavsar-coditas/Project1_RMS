@@ -1,6 +1,7 @@
 package com.example.RestaurantOnboarding.mapper.impl;
 
 import com.example.RestaurantOnboarding.dto.BranchDto.BranchResponseDto;
+import com.example.RestaurantOnboarding.dto.BranchDto.CreateBranchRequestDto;
 import com.example.RestaurantOnboarding.dto.StaffDto.CreateStaffRequestDto;
 import com.example.RestaurantOnboarding.entity.RestaurantBranch;
 import com.example.RestaurantOnboarding.mapper.BranchMapper;
@@ -25,4 +26,10 @@ public class BranchMapperImpl implements BranchMapper {
     public RestaurantBranch toEntity(CreateStaffRequestDto dto) {
         return modelMapper.map(dto, RestaurantBranch.class);
     }
+
+    @Override
+    public RestaurantBranch toEntity(CreateBranchRequestDto dto) {
+        return modelMapper.map(dto, RestaurantBranch.class);
+    }
+
 }
