@@ -1,22 +1,23 @@
 package com.example.RestaurantOnboarding.entity;
 
+import com.example.RestaurantOnboarding.enums.RoleType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
+@Table(name = "roles")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long role_id;
+    private Long roleId;
 
-    @Column(nullable = false ,unique = true)
-    private String role_name ;
+    @Enumerated(EnumType.STRING)
+    @Column(unique = true)
+    private RoleType roleName;
 }

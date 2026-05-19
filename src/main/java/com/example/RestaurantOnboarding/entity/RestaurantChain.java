@@ -1,23 +1,25 @@
 package com.example.RestaurantOnboarding.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "restaurant_chains")
 @Getter
 @Setter
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
-public class RestaurantChain extends BaseEntity{
+@AllArgsConstructor
+@Builder
+public class RestaurantChain extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chain_id;
+    private Long chainId;
 
-    private String chain_name;
+    @Column(nullable = false)
+    private String chainName;
 
     private String description;
 
@@ -25,4 +27,6 @@ public class RestaurantChain extends BaseEntity{
     @JoinColumn(name = "owner_id")
     private User owner;
 
+    @OneToMany(mappedBy = "restaurantChain")
+    private List<RestaurantBranch> branches;
 }

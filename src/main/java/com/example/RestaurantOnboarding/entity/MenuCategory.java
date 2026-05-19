@@ -3,20 +3,18 @@ package com.example.RestaurantOnboarding.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Entity
+@Table(name = "menu_categories")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class MenuCategory {
+public class MenuCategory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long category_id;
+    private Long categoryId;
 
-    private String category_name;
-
-    @ManyToOne
-    @JoinColumn(name = "branch_id")
-    private Restaurant_branch branch;
+    private String categoryName;
 }
