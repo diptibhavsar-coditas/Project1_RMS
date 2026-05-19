@@ -1,5 +1,6 @@
 package com.example.RestaurantOnboarding.entity;
 
+import com.example.RestaurantOnboarding.enums.StaffRole;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -8,19 +8,19 @@ import java.util.List;
 
 public interface InventoryService {
 
-    InventoryResponseDto addIngredient(CreateInventoryRequestDto dto);
-
-    InventoryResponseDto updateIngredient(Long id, UpdateInventoryRequestDto dto);
-
-    InventoryResponseDto getIngredientById(Long id);
-
-    List<InventoryResponseDto> getAllIngredients(Long branchId);
-
-    void reduceStock(Long ingredientId, int quantity);
-
-    void increaseStock(Long ingredientId, int quantity);
-
-    void deleteIngredient(Long id);
-
-    List<InventoryResponseDto> getLowStockItems(Long branchId);
+//    InventoryResponseDto addIngredient(CreateInventoryRequestDto dto);
+//
+//    InventoryResponseDto updateIngredient(Long id, UpdateInventoryRequestDto dto);
+//
+//    InventoryResponseDto getIngredientById(Long id);
+//
+//    List<InventoryResponseDto> getAllIngredients(Long branchId);
+//
+      void reduceStock(Long ingredientId, int quantity);
+//
+//    void increaseStock(Long ingredientId, int quantity);
+//
+//    void deleteIngredient(Long id);
+//
+//    List<InventoryResponseDto> getLowStockItems(Long branchId);
 }

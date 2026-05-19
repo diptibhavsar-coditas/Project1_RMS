@@ -27,7 +27,7 @@ public class BillingServiceImpl implements BillingService {
         CustomerOrder order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
 
-        double subtotal = order.getTotalAmount();
+        Double subtotal = order.getBillInvoice().getFinalAmount();
 
         double gst = subtotal * 0.05;
         double vat = 0;
@@ -41,7 +41,7 @@ public class BillingServiceImpl implements BillingService {
         billRepository.save(bill);
 
         BillResponseDto dto = new BillResponseDto();
-        dto.setBillId(bill.getId());
+        dto.setBillId(bill.getInvoiceId());
         dto.setSubTotal(subtotal);
         dto.setGst(gst);
         dto.setVat(vat);

@@ -18,9 +18,9 @@ public class InventoryStock extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stockId;
 
-    private BigDecimal availableQuantity;
+    private Long availableQuantity;
 
-    private BigDecimal rawMaterialCost;
+    private Double rawMaterialCost;
 
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
@@ -29,6 +29,7 @@ public class InventoryStock extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "branch_id")
     private RestaurantBranch branch;
+
 
 
 }

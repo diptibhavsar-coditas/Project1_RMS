@@ -42,11 +42,11 @@ public class OrderServiceImpl implements OrderService {
 
         order.setTotalAmount(total);
 
-        Order saved = orderRepository.save(order);
+        CustomerOrder saved = orderRepository.save(order);
 
         OrderResponseDto response = new OrderResponseDto();
-        response.setOrderId(saved.getId());
-        response.setStatus(saved.getStatus().name());
+        response.setOrderId(saved.getOrderId());
+        response.setStatus(saved.getOrderStatus().name());
         response.setTotalAmount(total);
 
         return response;
@@ -55,7 +55,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderResponseDto updateStatus(Long orderId, OrderStatus status) {
 
-        Order order = orderRepository.findById(orderId)
+        CustomerOrder order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
 
         order.setStatus(status);
@@ -63,7 +63,7 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order);
 
         OrderResponseDto response = new OrderResponseDto();
-        response.setOrderId(order.getId());
+        response.setOrderId(order.getOrderId());
         response.setStatus(status.name());
         response.setTotalAmount(order.getTotalAmount());
 

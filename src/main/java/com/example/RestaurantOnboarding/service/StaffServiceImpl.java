@@ -87,13 +87,13 @@ public class StaffServiceImpl  {
             staff.setSalary(BigDecimal.valueOf(dto.getSalary()));
         }
 
-        if (dto.getStaffRole() != null) {
-            staff.setStaffRole(dto.getStaffRole());
-        }
+//        if (dto.getStaffRole() != null) {
+//            staff.setStaffRole(dto.getStaffRole());
+//        }
 
         return staffMapper.toDto(staffRepository.save(staff));
     }
-    
+
     public void deleteStaff(Long id) {
 
         Staff staff = staffRepository.findById(id)

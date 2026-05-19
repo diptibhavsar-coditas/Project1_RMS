@@ -3,11 +3,6 @@ package com.example.RestaurantOnboarding.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "bill_invoices")
 @Getter
@@ -22,23 +17,31 @@ public class BillInvoice extends BaseEntity {
     private Long invoiceId;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal subtotal;
+    private Double subtotal;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal gstAmount;
+    private Double gstAmount;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal vatAmount;
+    private Double vatAmount;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal discountAmount;
+    private Double discountAmount;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal finalAmount;
+    private Double finalAmount;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
     private CustomerOrder customerOrder;
 
+
+    public void setOrder(CustomerOrder order) {
+        this.customerOrder =order;
+    }
+
+    public void setTotalAmount(double total) {
+        this.finalAmount=total;
+    }
 
 }

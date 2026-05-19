@@ -27,5 +27,4 @@ public class CreateStaffRequestDto {
     @NotNull
     private Long branchId;
 
-
 }

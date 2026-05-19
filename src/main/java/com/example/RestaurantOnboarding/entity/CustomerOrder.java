@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.net.ProtocolFamily;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class CustomerOrder extends BaseEntity {
 
     @Id
@@ -22,7 +23,7 @@ public class CustomerOrder extends BaseEntity {
     private Long orderId;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal totalAmount;
+    private Double totalAmount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -67,4 +68,9 @@ public class CustomerOrder extends BaseEntity {
             cascade = CascadeType.ALL
     )
     private BillInvoice billInvoice;
+
+    public void setStatus(OrderStatus status) {
+        this.orderStatus =status;
+    }
+
 }

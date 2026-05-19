@@ -25,7 +25,7 @@ public class MenuItem extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private DishCategory category;
 
-    private BigDecimal price;
+    private Double price;
 
     private Integer calories;
 
