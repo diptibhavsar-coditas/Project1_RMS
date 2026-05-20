@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface InventoryRepository extends JpaRepository<InventoryStock, Long> {
 
-    List<InventoryStock> findByBranchId(Long branchId);
-
-    List<InventoryStock> findByStockStatus(StockStatus stockStatus);
+    List<InventoryStock> findByBranch_BranchId(Long branchId);
 }

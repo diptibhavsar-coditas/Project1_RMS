@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class ChainResponseDto {
 
-    private Long id;
+    private Long chainId;
     private String name;
     private String ownerName;
 }

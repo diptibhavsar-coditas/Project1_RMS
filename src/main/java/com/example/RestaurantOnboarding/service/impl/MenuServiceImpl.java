@@ -36,7 +36,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuItemResponseDto> getMenuByBranch(Long branchId) {
-        return menuItemRepository.findByBranchId(branchId)
+        return menuItemRepository.findByItemId(branchId)
                 .stream()
                 .map(menuItemMapper::toDto)
                 .toList();

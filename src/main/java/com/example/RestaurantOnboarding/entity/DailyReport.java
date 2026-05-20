@@ -21,13 +21,13 @@ public class DailyReport extends BaseEntity {
 
     private LocalDate reportDate;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private BigDecimal totalSales;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private BigDecimal totalExpenses;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private BigDecimal netProfit;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -19,12 +19,13 @@ public class TableAssignment extends BaseEntity {
     private Long assignmentId;
 
     private LocalDate assignedDate;
-
+    private Integer tableNumber;
     @ManyToOne
     @JoinColumn(name = "staff_id")
     private Staff staff;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "table_id")
-    private TableMaster table;
+    private TableMaster tableMaster;
+
 }

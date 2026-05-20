@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class BranchResponseDto {
 
-    private Long id;
+    private Long branchId;
     private String ChainName;
     private String location;
     private String status;

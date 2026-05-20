@@ -23,8 +23,8 @@ public class OrderMapperImpl implements OrderMapper {
         OrderResponseDto dto =
                 modelMapper.map(entity, OrderResponseDto.class);
 
-        if (entity.getOrderStatus() != null) {
-            dto.setStatus(entity.getOrderStatus().name());
+        if (entity.getStatus() != null) {
+            dto.setStatus(entity.getStatus().name());
         }
 
         if (entity.getTable() != null) {

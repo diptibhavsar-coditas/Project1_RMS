@@ -3,6 +3,8 @@ package com.example.RestaurantOnboarding.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "bill_invoices")
 @Getter
@@ -10,38 +12,26 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BillInvoice extends BaseEntity {
+public class BillInvoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long invoiceId;
+    private Long billId;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double subtotal;
+    private Double totalAmount;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double gstAmount;
+    private Double taxAmount;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double vatAmount;
-
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double discountAmount;
-
-    @Column(nullable = false, precision = 10, scale = 2)
     private Double finalAmount;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
-    private CustomerOrder customerOrder;
+    private LocalDateTime generatedAt;
 
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private CustomerOrder order;
 
-    public void setOrder(CustomerOrder order) {
-        this.customerOrder =order;
-    }
-
-    public void setTotalAmount(double total) {
-        this.finalAmount=total;
-    }
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private RestaurantBranch branch;
 
 }

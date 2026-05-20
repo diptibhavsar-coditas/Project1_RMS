@@ -1,7 +1,6 @@
 package com.example.RestaurantOnboarding.entity;
 
-
-import com.example.RestaurantOnboarding.enums.GstCategory;
+import com.example.RestaurantOnboarding.enums.GstType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,32 +11,25 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RestaurantBranch extends BaseEntity{
+public class RestaurantBranch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long branchId;
 
-    private String branchName;
-
-    private String city;
+    private String name;
 
     private String address;
 
+    private String city;
+
+    private String contactNumber;
+
     @Enumerated(EnumType.STRING)
-    private GstCategory gstType;
+    private GstType gstType;
 
-    private Boolean hasLiquor;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chain_id")
     private RestaurantChain restaurantChain;
-
-    @ManyToOne
-    @JoinColumn(name = "manager_id")
-    private User manager;
-
-
-
 
 }

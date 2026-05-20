@@ -25,7 +25,7 @@ public class StaffMapperImpl implements StaffMapper {
                 modelMapper.map(entity, StaffResponseDto.class);
 
         if (entity.getBranch() != null) {
-            dto.setBranchName(entity.getBranch().getBranchName());
+            dto.setBranchName(entity.getBranch().getName());
         }
 
         if (entity.getRole() != null) {

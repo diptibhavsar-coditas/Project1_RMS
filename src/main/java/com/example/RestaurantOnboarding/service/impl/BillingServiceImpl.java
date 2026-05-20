@@ -41,7 +41,7 @@ public class BillingServiceImpl implements BillingService {
         billRepository.save(bill);
 
         BillResponseDto dto = new BillResponseDto();
-        dto.setBillId(bill.getInvoiceId());
+        dto.setBillId(bill.getBillId());
         dto.setSubTotal(subtotal);
         dto.setGst(gst);
         dto.setVat(vat);

@@ -18,7 +18,7 @@ public class Discount extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long discountId;
 
-    @Column(nullable = false, precision = 5, scale = 2)
+    @Column(nullable = false)
     private BigDecimal discountPercentage;
 
     @Column(nullable = false, length = 1000)

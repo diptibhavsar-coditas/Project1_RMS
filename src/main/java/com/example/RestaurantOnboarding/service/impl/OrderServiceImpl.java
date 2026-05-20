@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
 
         OrderResponseDto response = new OrderResponseDto();
         response.setOrderId(saved.getOrderId());
-        response.setStatus(saved.getOrderStatus().name());
+        response.setStatus(saved.getStatus().name());
         response.setTotalAmount(total);
 
         return response;

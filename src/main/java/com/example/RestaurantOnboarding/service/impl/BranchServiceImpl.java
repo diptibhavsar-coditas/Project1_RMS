@@ -26,7 +26,7 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public BranchResponseDto createBranch(CreateBranchRequestDto dto) {
 
-        if (branchRepository.existsByNameAndChainId(dto.getName(), dto.getChainId())) {
+        if (branchRepository.existsByNameAndBranchId(dto.getName(), dto.getChainId())) {
             throw new BusinessException("Branch already exists in chain");
         }
 
@@ -35,8 +35,8 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public List<BranchResponseDto> getAllBranches(Long chainId) {
-        return branchRepository.findByChainId(chainId)
+    public List<BranchResponseDto> getAllBranches(Long branchId) {
+        return branchRepository.findByBranchId(branchId)
                 .stream()
                 .map(branchMapper::toDto)
                 .toList();

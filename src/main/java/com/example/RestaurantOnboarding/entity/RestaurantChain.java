@@ -27,6 +27,7 @@ public class RestaurantChain extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    @OneToMany(mappedBy = "restaurantChain")
+
+    @OneToMany(mappedBy = "restaurantChain", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RestaurantBranch> branches;
 }
