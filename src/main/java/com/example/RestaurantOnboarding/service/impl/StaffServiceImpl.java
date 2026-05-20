@@ -6,10 +6,11 @@ import com.example.RestaurantOnboarding.entity.Staff;
 import com.example.RestaurantOnboarding.exception.BusinessException;
 import com.example.RestaurantOnboarding.mapper.StaffMapper;
 import com.example.RestaurantOnboarding.repository.StaffRepository;
+import com.example.RestaurantOnboarding.service.StaffService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StaffServiceImpl {
+public class StaffServiceImpl implements StaffService {
 
     private final StaffRepository staffRepository;
     private final StaffMapper staffMapper;
@@ -20,7 +21,7 @@ public class StaffServiceImpl {
         this.staffMapper = staffMapper;
     }
 
-
+    @Override
     public StaffResponseDto createStaff(CreateStaffRequestDto dto) {
 
         if (dto.getSalary() <= 0) {
@@ -28,6 +29,9 @@ public class StaffServiceImpl {
         }
 
         Staff staff = staffMapper.toEntity(dto);
-        return staffMapper.toDto(staffRepository.save(staff));
+
+        Staff savedStaff = staffRepository.save(staff);
+
+        return staffMapper.toDto(savedStaff);
     }
 }

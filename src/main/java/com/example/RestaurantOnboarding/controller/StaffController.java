@@ -3,7 +3,7 @@ package com.example.RestaurantOnboarding.controller;
 import com.example.RestaurantOnboarding.dto.StaffDto.CreateStaffRequestDto;
 import com.example.RestaurantOnboarding.dto.StaffDto.StaffResponseDto;
 import com.example.RestaurantOnboarding.exception.ApiResponse;
-import com.example.RestaurantOnboarding.service.StaffServiceImpl;
+import com.example.RestaurantOnboarding.service.StaffService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class StaffController {
 
     @Autowired
-    private StaffServiceImpl staffService;
+    private StaffService staffService;
 
-    public StaffController(StaffServiceImpl staffService) {
+    public StaffController(StaffService staffService) {
         this.staffService = staffService;
     }
 

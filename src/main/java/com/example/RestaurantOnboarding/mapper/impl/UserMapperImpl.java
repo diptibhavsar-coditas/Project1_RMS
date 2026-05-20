@@ -18,13 +18,14 @@ public class UserMapperImpl implements UserMapper {
 
     @Override
     public UserResponseDto toDto(User entity) {
-        return modelMapper.map(entity, UserResponseDto.class);
+
+        UserResponseDto dto =
+                modelMapper.map(entity, UserResponseDto.class);
+
+        if (entity.getRole() != null) {
+            dto.setRole(String.valueOf(entity.getRole().getRoleName()));
+        }
+
+        return dto;
     }
-
-    @Override
-    public User toEntity(CreateStaffRequestDto dto) {
-        return modelMapper.map(dto, User.class);
-    }
-
-
 }

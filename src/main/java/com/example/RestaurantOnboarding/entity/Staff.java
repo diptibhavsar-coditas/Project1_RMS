@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.net.ProtocolFamily;
 import java.time.LocalDate;
 
 @Entity
@@ -38,4 +39,6 @@ public class Staff extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "branch_id")
     private RestaurantBranch branch;
+
+
 }

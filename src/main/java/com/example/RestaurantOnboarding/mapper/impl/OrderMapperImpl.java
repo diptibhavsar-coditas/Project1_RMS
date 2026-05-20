@@ -1,9 +1,10 @@
 package com.example.RestaurantOnboarding.mapper.impl;
 
+import com.example.RestaurantOnboarding.dto.OrderDto.CreateOrderRequestDto;
 import com.example.RestaurantOnboarding.dto.OrderDto.OrderResponseDto;
-import com.example.RestaurantOnboarding.dto.StaffDto.CreateStaffRequestDto;
 import com.example.RestaurantOnboarding.entity.CustomerOrder;
 import com.example.RestaurantOnboarding.mapper.OrderMapper;
+import jakarta.persistence.criteria.Order;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +19,24 @@ public class OrderMapperImpl implements OrderMapper {
 
     @Override
     public OrderResponseDto toDto(CustomerOrder entity) {
-        return modelMapper.map(entity, OrderResponseDto.class);
+
+        OrderResponseDto dto =
+                modelMapper.map(entity, OrderResponseDto.class);
+
+        if (entity.getOrderStatus() != null) {
+            dto.setStatus(entity.getOrderStatus().name());
+        }
+
+        if (entity.getTable() != null) {
+            dto.setTableNumber(entity.getTable().getTableNumber());
+        }
+
+        return dto;
     }
 
     @Override
-    public CustomerOrder toEntity(CreateStaffRequestDto dto) {
+    public CustomerOrder toEntity(CreateOrderRequestDto dto) {
+
         return modelMapper.map(dto, CustomerOrder.class);
     }
 }

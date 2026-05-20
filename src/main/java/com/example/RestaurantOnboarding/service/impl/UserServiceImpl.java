@@ -52,7 +52,14 @@ public class UserServiceImpl implements UserService {
                 )
         );
 
-        return new AuthResponseDto(token, user.getRole().getRoleName(), "Login successful");
+        return AuthResponseDto.builder()
+                .token(token)
+                .tokenType("Bearer")
+                .role(String.valueOf(user.getRole().getRoleName()))
+                .userId(user.getUserId())
+                .email(user.getEmail())
+                .message("Login successful")
+                .build();
     }
 
     @Override

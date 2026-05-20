@@ -21,29 +21,23 @@ public class StaffMapperImpl implements StaffMapper {
     @Override
     public StaffResponseDto toDto(Staff entity) {
 
-        StaffResponseDto dto = modelMapper.map(entity, StaffResponseDto.class);
+        StaffResponseDto dto =
+                modelMapper.map(entity, StaffResponseDto.class);
 
         if (entity.getBranch() != null) {
             dto.setBranchName(entity.getBranch().getBranchName());
         }
 
-        dto.setStaffRole(entity.getRole().name());
+        if (entity.getRole() != null) {
+            dto.setStaffRole(entity.getRole().name());
+        }
 
         return dto;
     }
 
     @Override
     public Staff toEntity(CreateStaffRequestDto dto) {
-        return null;
-    }
 
-    @Override
-    public RestaurantBranch toEntity(CreateBranchRequestDto dto) {
-        return null;
-    }
-
-    @Override
-    public Staff toEntity(StaffResponseDto dto) {
         return modelMapper.map(dto, Staff.class);
     }
 }

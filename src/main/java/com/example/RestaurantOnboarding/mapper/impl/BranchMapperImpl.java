@@ -2,7 +2,6 @@ package com.example.RestaurantOnboarding.mapper.impl;
 
 import com.example.RestaurantOnboarding.dto.BranchDto.BranchResponseDto;
 import com.example.RestaurantOnboarding.dto.BranchDto.CreateBranchRequestDto;
-import com.example.RestaurantOnboarding.dto.StaffDto.CreateStaffRequestDto;
 import com.example.RestaurantOnboarding.entity.RestaurantBranch;
 import com.example.RestaurantOnboarding.mapper.BranchMapper;
 import org.modelmapper.ModelMapper;
@@ -19,17 +18,24 @@ public class BranchMapperImpl implements BranchMapper {
 
     @Override
     public BranchResponseDto toDto(RestaurantBranch entity) {
-        return modelMapper.map(entity, BranchResponseDto.class);
-    }
 
-    @Override
-    public RestaurantBranch toEntity(CreateStaffRequestDto dto) {
-        return modelMapper.map(dto, RestaurantBranch.class);
+        BranchResponseDto dto =
+                modelMapper.map(entity, BranchResponseDto.class);
+
+        if (entity.getRestaurantChain() != null) {
+            dto.setChainName(entity.getRestaurantChain().getChainName());
+        }
+
+        if (entity.getGstType() != null) {
+            dto.setGstType(entity.getGstType().name());
+        }
+
+        return dto;
     }
 
     @Override
     public RestaurantBranch toEntity(CreateBranchRequestDto dto) {
+
         return modelMapper.map(dto, RestaurantBranch.class);
     }
-
 }

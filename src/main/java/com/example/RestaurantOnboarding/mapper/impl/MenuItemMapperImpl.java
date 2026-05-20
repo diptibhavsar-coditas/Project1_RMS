@@ -21,12 +21,20 @@ public class MenuItemMapperImpl implements MenuItemMapper {
 
     @Override
     public MenuItemResponseDto toDto(MenuItem entity) {
-        return modelMapper.map(entity, MenuItemResponseDto.class);
+
+        MenuItemResponseDto dto =
+                modelMapper.map(entity, MenuItemResponseDto.class);
+
+        if (entity.getCategory() != null) {
+            dto.setCategory(entity.getCategory().name());
+        }
+
+        return dto;
     }
 
     @Override
-    public MenuItem toEntity(CreateStaffRequestDto dto) {
+    public MenuItem toEntity(CreateMenuItemRequestDto dto) {
+
         return modelMapper.map(dto, MenuItem.class);
     }
-
 }

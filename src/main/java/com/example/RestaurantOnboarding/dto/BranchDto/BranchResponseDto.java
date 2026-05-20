@@ -8,7 +8,11 @@ import lombok.Setter;
 public class BranchResponseDto {
 
     private Long id;
-    private String name;
+    private String ChainName;
     private String location;
     private String status;
+
+    private String gstType;
+
+
 }
